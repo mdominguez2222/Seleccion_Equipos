@@ -1,0 +1,17 @@
+import flet as ft
+
+def main(page: ft.Page):
+    page.title="Trabajo equipos"
+    page.update()
+
+
+    dropDown_Menu= ft.Dropdown(width=300, options=[ft.dropdown.Option("Tomate")]) #Opción para elegir
+    dropDown_Menu.options.append(ft.dropdown.Option("Zanahoria"))
+    dropDown_Menu.options.append(ft.dropdown.Option("Pimiento verde"))
+    dropDown_Menu.options.append(ft.dropdown.Option("Cebolla"))
+    dropDown_Menu.options.append(ft.dropdown.Option("Alcachofas"))
+    page.update()
+    page.add(dropDown_Menu)
+
+ft.app(target=main)  
+    
