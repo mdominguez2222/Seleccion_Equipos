@@ -4,14 +4,24 @@ def main(page: ft.Page):
     page.title="Trabajo equipos"
     page.update()
 
-
-    atleti = ft.Image(src=f"/Imagenes/atleti-removebg-preview.png", width=100, height=100,fit=ft.ImageFit.CONTAIN)
-    barsa = ft.Image(src=f"/Imagenes/barsa-removebg-preview(1).png", width=100, height=100,fit=ft.ImageFit.CONTAIN)
-    betis = ft.Image(src=f"/Imagenes/betis-removebg-preview.png", width=100, height=100,fit=ft.ImageFit.CONTAIN)
-    psg = ft.Image(src=f"/Imagenes/psg-removebg-preview.png", width=100, height=100,fit=ft.ImageFit.CONTAIN)
-    real_madrid = ft.Image(src=f"/Imagenes/real_madrid-removebg-preview.png", width=100, height=100,fit=ft.ImageFit.CONTAIN)
-    page.add(atleti,barsa, betis, psg, real_madrid)
-    dropDown_Equipos = ft.Dropdown(width=300, hint_text="Equipos de fútbol", options=[ft.dropdown.Option("Barça FC")])
+    def cambiar_imagen(e):
+        if dropDown_Equipos.value=="Barça FC":
+            imagen.src="barsa.png"  
+        elif dropDown_Equipos.value=="Atlético de Madrid":
+            imagen.src="atleti.png"       
+        elif dropDown_Equipos.value=="Real Madrid":
+            imagen.src="real.png"  
+        elif dropDown_Equipos.value=="PSG":
+            imagen.src="psg.png"  
+        elif dropDown_Equipos.value=="Betis":
+            imagen.src="betis.png"  
+        page.update()        
+    
+    
+    imagen= ft.Image(src=f"ed", width=100, height=100,fit=ft.ImageFit.CONTAIN)
+    page.add(imagen)
+    
+    dropDown_Equipos = ft.Dropdown(width=300, hint_text="Equipos de fútbol", options=[ft.dropdown.Option("Barça FC")], on_change=cambiar_imagen)
     dropDown_Equipos.options.append(ft.dropdown.Option("Atlético de Madrid"))
     dropDown_Equipos.options.append(ft.dropdown.Option("Real Madrid"))
     dropDown_Equipos.options.append(ft.dropdown.Option("PSG"))
@@ -21,22 +31,4 @@ def main(page: ft.Page):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
 ft.app(target=main, assets_dir="Imagenes")
