@@ -2,7 +2,10 @@ import flet as ft
 
 def main(page: ft.Page):
     page.title="Trabajo equipos"
-    page.vertical_alignment=
+    #page.vertical_alignment=
+
+    vEquipos = ["Real Madrid", "Barça FC", "PSG","Atlético de Madrid", "Betis"]
+    vEquiposSeleccionados = []
 
     def cambiar_imagen(e):
         if dropDown_Equipos.value=="Barça FC":
@@ -22,13 +25,15 @@ def main(page: ft.Page):
     
     
     
-    dropDown_Equipos = ft.Dropdown(width=300, hint_text="Equipos de fútbol", options=[ft.dropdown.Option("Barça FC")], on_change=cambiar_imagen)
-    dropDown_Equipos.options.append(ft.dropdown.Option("Atlético de Madrid"))
-    dropDown_Equipos.options.append(ft.dropdown.Option("Real Madrid"))
-    dropDown_Equipos.options.append(ft.dropdown.Option("PSG"))
-    dropDown_Equipos.options.append(ft.dropdown.Option("Betis"))
+    dropDown_Equipos = ft.Dropdown(width=300, hint_text="Equipos de fútbol", on_change=cambiar_imagen)
+    
+    for equipo in vEquipos:
+        dropDown_Equipos.options.append(ft.dropdown.Option(equipo))
+
+
     
     page.add(dropDown_Equipos, imagen)
+
 
 
 
