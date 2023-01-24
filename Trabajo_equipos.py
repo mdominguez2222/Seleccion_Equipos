@@ -6,6 +6,16 @@ def main(page: ft.Page):
     page.title="Trabajo equipos"
     vEquipos = ["Real Madrid", "Barça FC", "PSG","Atlético de Madrid", "Betis"]
 
+    def guardarEquipos (e):
+        equipo = dropDown_Equipos.value
+        if vEquiposSeleccionados.count(equipo)== 0:
+            vEquiposSeleccionados.append(equipo)
+        else:
+            print("Error")
+        
+        print(vEquiposSeleccionados)
+ 
+        
     def cambiar_imagen(e):
         if dropDown_Equipos.value=="Barça FC":
             imagen.src="barsa.png"  
@@ -25,7 +35,7 @@ def main(page: ft.Page):
     #boton
 
     boton=ft.FloatingActionButton(
-        icon=ft.icons.ADD, #on_click=, 
+        icon=ft.icons.ADD, on_click= guardarEquipos, 
         bgcolor=ft.colors.LIME_300)
 
     
