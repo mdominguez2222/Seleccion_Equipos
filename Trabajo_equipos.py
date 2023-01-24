@@ -1,11 +1,10 @@
 import flet as ft
 
+vEquiposSeleccionados = []
+
 def main(page: ft.Page):
     page.title="Trabajo equipos"
-    #page.vertical_alignment=
-
     vEquipos = ["Real Madrid", "Barça FC", "PSG","Atlético de Madrid", "Betis"]
-    vEquiposSeleccionados = []
 
     def cambiar_imagen(e):
         if dropDown_Equipos.value=="Barça FC":
@@ -23,7 +22,12 @@ def main(page: ft.Page):
     
     imagen= ft.Image(src=f"ed", width=100, height=100,fit=ft.ImageFit.CONTAIN)
     
-    
+    #boton
+
+    boton=ft.FloatingActionButton(
+        icon=ft.icons.ADD, #on_click=, 
+        bgcolor=ft.colors.LIME_300)
+
     
     dropDown_Equipos = ft.Dropdown(width=300, hint_text="Equipos de fútbol", on_change=cambiar_imagen)
     
@@ -32,9 +36,9 @@ def main(page: ft.Page):
 
 
     
-    page.add(dropDown_Equipos, imagen)
+    page.add(dropDown_Equipos, imagen, boton)
 
-
+    
 
 
 ft.app(target=main, assets_dir="Imagenes")
