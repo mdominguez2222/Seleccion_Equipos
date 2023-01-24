@@ -6,16 +6,19 @@ def main(page: ft.Page):
     page.title="Trabajo equipos"
     vEquipos = ["Real Madrid", "Barça FC", "PSG","Atlético de Madrid", "Betis"]
 
+
     def guardarEquipos (e):
         equipo = dropDown_Equipos.value
         if vEquiposSeleccionados.count(equipo)== 0:
             vEquiposSeleccionados.append(equipo)
         else:
-            print("Error")
+           dlg = ft.AlertDialog(title=ft.Text(f"{equipo} repetido, ERROR "),on_dismiss=lambda e: print("Dialog dismissed!"))
+           page.dialog = dlg
+           dlg.open = True
+           page.update()
         
         print(vEquiposSeleccionados)
- 
-        
+
     def cambiar_imagen(e):
         if dropDown_Equipos.value=="Barça FC":
             imagen.src="barsa.png"  
@@ -37,6 +40,7 @@ def main(page: ft.Page):
     boton=ft.FloatingActionButton(
         icon=ft.icons.ADD, on_click= guardarEquipos, 
         bgcolor=ft.colors.LIME_300)
+
 
     
     dropDown_Equipos = ft.Dropdown(width=300, hint_text="Equipos de fútbol", on_change=cambiar_imagen)
