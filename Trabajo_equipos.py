@@ -30,7 +30,8 @@ def main(page: ft.Page):
             imagen.src="psg.png"  
         elif dropDown_Equipos.value=="Betis":
             imagen.src="betis.png"  
-        page.update()        
+        page.update()    
+            
     
     
     imagen= ft.Image(src=f"ed", width=100, height=100,fit=ft.ImageFit.CONTAIN)
