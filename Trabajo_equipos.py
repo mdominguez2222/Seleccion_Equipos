@@ -1,16 +1,21 @@
 import flet as ft
 
-vEquiposSeleccionados = []
 
 def main(page: ft.Page):
     page.title="Trabajo equipos"
     vEquipos = ["Real Madrid", "Barça FC", "PSG","Atlético de Madrid", "Betis"]
-
-
+    vEquiposSeleccionados = []
+    
+       #list View
+    
+    lv = ft.ListView(expand=True, spacing=10)
+        
+        
     def guardarEquipos (e):
         equipo = dropDown_Equipos.value
         if vEquiposSeleccionados.count(equipo)== 0:
             vEquiposSeleccionados.append(equipo)
+            lv.controls.append(ft.Text(equipo))
         else:
            dlg = ft.AlertDialog(title=ft.Text(f"{equipo} repetido, ERROR "),on_dismiss=lambda e: print("Dialog dismissed!"))
            page.dialog = dlg
@@ -32,7 +37,8 @@ def main(page: ft.Page):
             imagen.src="betis.png"  
         page.update()    
             
-    
+
+
     
     imagen= ft.Image(src=f"ed", width=100, height=100,fit=ft.ImageFit.CONTAIN)
     
@@ -51,7 +57,8 @@ def main(page: ft.Page):
 
 
     
-    page.add(dropDown_Equipos, imagen, boton)
+    page.add(dropDown_Equipos, imagen, boton, lv)
+    
 
     
 
