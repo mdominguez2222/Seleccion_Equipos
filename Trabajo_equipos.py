@@ -46,7 +46,7 @@ def main(page: ft.Page):
 
     boton=ft.FloatingActionButton(
         icon=ft.icons.ADD, on_click= guardarEquipos, 
-        bgcolor=ft.colors.LIME_300)
+        bgcolor=ft.colors.BLUE_300)
 
 
     
