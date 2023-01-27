@@ -1,21 +1,20 @@
 import flet as ft
 
-
 def main(page: ft.Page):
     page.title="Trabajo equipos"
     vEquipos = ["Real Madrid", "Barça FC", "PSG","Atlético de Madrid", "Betis"]
     vEquiposSeleccionados = []
     
-       #list View
-    
-    lv = ft.ListView(expand=True, spacing=10)
-        
-        
+
     def guardarEquipos (e):
         equipo = dropDown_Equipos.value
+        
         if vEquiposSeleccionados.count(equipo)== 0:
+            foto= ft.Image(src= imagen.src, width=50, height=50)
+            texto= ft.Text(equipo)
+            fila= ft.Row(controls=[foto, texto])
             vEquiposSeleccionados.append(equipo)
-            lv.controls.append(ft.Text(equipo))
+            page.add(fila)
         else:
            dlg = ft.AlertDialog(title=ft.Text(f"{equipo} repetido, ERROR "),on_dismiss=lambda e: print("Dialog dismissed!"))
            page.dialog = dlg
@@ -36,6 +35,7 @@ def main(page: ft.Page):
         elif dropDown_Equipos.value=="Betis":
             imagen.src="betis.png"  
         page.update()    
+        return(imagen.src)
             
 
 
@@ -55,11 +55,8 @@ def main(page: ft.Page):
     for equipo in vEquipos:
         dropDown_Equipos.options.append(ft.dropdown.Option(equipo))
 
-
-    
-    page.add(dropDown_Equipos, imagen, boton, lv)
-    
-
+      
+    page.add(dropDown_Equipos, imagen, boton)
     
 
 
