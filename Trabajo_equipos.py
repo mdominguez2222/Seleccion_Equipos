@@ -2,10 +2,21 @@ import flet as ft
 
 def main(page: ft.Page):
     page.title="Trabajo equipos"
-    vEquipos = ["Real Madrid", "Barça FC", "PSG","Atlético de Madrid", "Betis"]
     vEquiposSeleccionados = []
     
+    def cargarEquipos():
+        vEquipos= []
+        f = open("Equipos.txt", "r")
 
+        for linea in f:
+            vEquipos.append(linea)
+            
+        f.close()
+        return vEquipos
+    
+    vEquipos = cargarEquipos()
+    
+    
     def guardarEquipos (e):
         equipo = dropDown_Equipos.value
         
@@ -36,10 +47,8 @@ def main(page: ft.Page):
             imagen.src="betis.png"  
         page.update()    
         return(imagen.src)
-            
-
-
-    
+        
+        
     imagen= ft.Image(src=f"ed", width=100, height=100,fit=ft.ImageFit.CONTAIN)
     
     #boton
