@@ -9,13 +9,20 @@ def main(page: ft.Page):
         f = open("Equipos.txt", "r")
 
         for linea in f:
-            vEquipos.append(linea)
+            vEquipos.append(linea.replace("\n",""))
             
         f.close()
         return vEquipos
     
     vEquipos = cargarEquipos()
     
+    def guardar():
+        f= open("Guardar equipos.txt", "w")
+        
+        for linea in f:
+            f.write(linea)
+            
+        f.close()
     
     def guardarEquipos (e):
         equipo = dropDown_Equipos.value
@@ -35,15 +42,15 @@ def main(page: ft.Page):
         print(vEquiposSeleccionados)
 
     def cambiar_imagen(e):
-        if dropDown_Equipos.value=="Barça FC\n":
+        if dropDown_Equipos.value=="Barça FC":
             imagen.src="barsa.png"  
-        elif dropDown_Equipos.value=="Atlético de Madrid\n":
+        elif dropDown_Equipos.value=="Atlético de Madrid":
             imagen.src="atleti.png"       
         elif dropDown_Equipos.value=="Real Madrid":
             imagen.src="real.png"  
-        elif dropDown_Equipos.value=="PSG\n":
+        elif dropDown_Equipos.value=="PSG":
             imagen.src="psg.png"  
-        elif dropDown_Equipos.value=="Betis\n":
+        elif dropDown_Equipos.value=="Betis":
             imagen.src="betis.png"  
         page.update()    
         return(imagen.src)
@@ -56,6 +63,8 @@ def main(page: ft.Page):
     boton=ft.FloatingActionButton(
         icon=ft.icons.ADD, on_click= guardarEquipos, 
         bgcolor=ft.colors.BLUE_300)
+    
+    botonguardar=ft.FilledButton(text="Guardar equipos", on_click=guardar)
 
 
     
@@ -65,7 +74,7 @@ def main(page: ft.Page):
         dropDown_Equipos.options.append(ft.dropdown.Option(equipo))
 
       
-    page.add(dropDown_Equipos, imagen, boton)
+    page.add(dropDown_Equipos, imagen, boton, botonguardar)
     
 
 
