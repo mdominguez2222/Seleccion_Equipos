@@ -35,15 +35,15 @@ def main(page: ft.Page):
         print(vEquiposSeleccionados)
 
     def cambiar_imagen(e):
-        if dropDown_Equipos.value=="Barça FC":
+        if dropDown_Equipos.value=="Barça FC\n":
             imagen.src="barsa.png"  
-        elif dropDown_Equipos.value=="Atlético de Madrid":
+        elif dropDown_Equipos.value=="Atlético de Madrid\n":
             imagen.src="atleti.png"       
         elif dropDown_Equipos.value=="Real Madrid":
             imagen.src="real.png"  
-        elif dropDown_Equipos.value=="PSG":
+        elif dropDown_Equipos.value=="PSG\n":
             imagen.src="psg.png"  
-        elif dropDown_Equipos.value=="Betis":
+        elif dropDown_Equipos.value=="Betis\n":
             imagen.src="betis.png"  
         page.update()    
         return(imagen.src)
