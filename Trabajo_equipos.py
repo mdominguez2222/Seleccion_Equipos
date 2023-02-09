@@ -16,13 +16,15 @@ def main(page: ft.Page):
     
     vEquipos = cargarEquipos()
     
-    def guardar():
-        f= open("Guardar equipos.txt", "w")
+    def guardar(e):
+        f = open("Guardarequipos.txt", "w")
         
-        for linea in f:
-            f.write(linea)
-            
+        for linea in vEquiposSeleccionados:
+            f.write(linea + ";")
+        
+        
         f.close()
+    
     
     def guardarEquipos (e):
         equipo = dropDown_Equipos.value
@@ -52,6 +54,8 @@ def main(page: ft.Page):
             imagen.src="psg.png"  
         elif dropDown_Equipos.value=="Betis":
             imagen.src="betis.png"  
+        else:     
+            imagen.src="error.jpg"  
         page.update()    
         return(imagen.src)
         
